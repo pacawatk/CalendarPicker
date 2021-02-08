@@ -146,16 +146,12 @@ export default function Day(props) {
       if (selectedStartDate && selectedEndDate) {
         // Apply style for start date
         if (isThisDaySameAsSelectedStart) {
-          console.log('isThisDaySameAsSelectedStart');
           computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-          console.log(computedSelectedDayStyle);
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
         }
         // Apply style for end date
         if (isThisDaySameAsSelectedEnd) {
-          console.log('isThisDaySameAsSelectedEnd');
           computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
-          console.log(computedSelectedDayStyle);
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeEndTextStyle];
         }
         // Apply style if start date is the same as end date
@@ -168,9 +164,7 @@ export default function Day(props) {
         }
         // Apply style for days inside of range, excluding start & end dates.
         if (thisDay.isBetween(selectedStartDate, selectedEndDate, 'day', '()')) {
-          console.log('thisDay.isBetween');
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
-          console.log(computedSelectedDayStyle);
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
       }
@@ -179,9 +173,7 @@ export default function Day(props) {
           !selectedEndDate &&
           isThisDaySameAsSelectedStart)
       {
-        console.log('selectedStartDate && !selectedEndDate && isThisDaySameAsSelectedStart');
         computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-        console.log(computedSelectedDayStyle);
         selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
         // Override out of range start day text style when minRangeDuration = 1.
         // This allows selected start date's text to be styled by selectedRangeStartTextStyle
@@ -207,14 +199,19 @@ export default function Day(props) {
     } else {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
+          {isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd && <View style={
+            isThisDaySameAsSelectedStart ? {...selectedRangeStyle, alignSelf: 'flex-end', justifyContent: 'flex-end'} :
+            isThisDaySameAsSelectedEnd ? { ...selectedRangeStyle, alignSelf: 'flex-start', justifyContent: 'flex-start' } : {}
+          } />}
           <TouchableOpacity
-            testID={day}
-            accessible={Platform.OS === 'android' ? day : undefined}
             activeOpacity={1}
+            accessible={false}
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}
             onPress={() => onPressDay({year, month, day}) }>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
+            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
+            testID={day}
+            accessibilityLabel={Platform.OS === 'android' ? day : undefined}>
               { day }
             </Text>
           </TouchableOpacity>
