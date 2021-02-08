@@ -199,7 +199,7 @@ export default function Day(props) {
     } else {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          {isThisDaySameAsSelectedEnd && <View style={
+          {isThisDaySameAsSelectedEnd && (selectedStartDate && selectedEndDate) && <View style={
             {
               ...styles.inRangeDay, 
               ...selectedRangeStyle,
@@ -207,7 +207,7 @@ export default function Day(props) {
               right: '50%',
               width: '50%'
             }} />}
-          {isThisDaySameAsSelectedStart && <View style={
+          {isThisDaySameAsSelectedStart && !(selectedStartDate &&!selectedEndDate) && <View style={
             {
               ...styles.inRangeDay, 
               ...selectedRangeStyle,
