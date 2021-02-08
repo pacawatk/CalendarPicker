@@ -18,6 +18,7 @@ export default function Controls(props) {
 
   return (
     <TouchableOpacity
+      accessible={false}
       onPress={() => onPressControl()}
       style={styles}
       disabled={disabled}
