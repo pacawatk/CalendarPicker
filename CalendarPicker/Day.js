@@ -200,8 +200,8 @@ export default function Day(props) {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           {isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd && <View style={
-            isThisDaySameAsSelectedStart ? {...selectedRangeStyle, alignSelf: 'flex-end', justifyContent: 'flex-end'} :
-            isThisDaySameAsSelectedEnd ? { ...selectedRangeStyle, alignSelf: 'flex-start', justifyContent: 'flex-start' } : {}
+            isThisDaySameAsSelectedStart ? {...styles.inRangeDay, ...selectedRangeStyle, alignSelf: 'flex-end', justifyContent: 'flex-end'} :
+            isThisDaySameAsSelectedEnd ? { ...styles.inRangeDay, ...selectedRangeStyle, alignSelf: 'flex-start', justifyContent: 'flex-start' } : {}
           } />}
           <TouchableOpacity
             activeOpacity={1}
