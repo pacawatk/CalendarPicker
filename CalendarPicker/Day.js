@@ -145,12 +145,12 @@ export default function Day(props) {
       if (selectedStartDate && selectedEndDate) {
         // Apply style for start date
         if (isThisDaySameAsSelectedStart) {
-          computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
+          computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStartStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
         }
         // Apply style for end date
         if (isThisDaySameAsSelectedEnd) {
-          computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
+          computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeEndStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeEndTextStyle];
         }
         // Apply style if start date is the same as end date
