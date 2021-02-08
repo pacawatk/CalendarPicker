@@ -210,8 +210,8 @@ export default function Day(props) {
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}
             onPress={() => onPressDay({year, month, day}) }>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
-            testID={day}
-            accessibilityLabel={Platform.OS === 'android' ? day : undefined}>
+            testID={`${day}`}
+            accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
               { day }
             </Text>
           </TouchableOpacity>
