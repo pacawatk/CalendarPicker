@@ -199,7 +199,11 @@ export default function Day(props) {
     } else {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          {selectedStartDate && selectedEndDate && <View style={{...styles.inRangeDay, ...selectedRangeStyle, position: 'absolute'}} />}
+          {selectedStartDate && selectedEndDate && <View style={
+            {...styles.inRangeDay, ...selectedRangeStyle, 
+            position: 'absolute', 
+            right: isThisDaySameAsSelectedEnd ? '50%': undefined,
+            left: isThisDaySameAsSelectedStart ? '50%' : undefined}} />}
           <TouchableOpacity
             activeOpacity={1}
             accessible={false}
