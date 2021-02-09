@@ -186,7 +186,7 @@ export default function Day(props) {
     if (dateOutOfRange) { // start or end date selected, and this date outside of range.
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}>
+          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}>
             <Text style={[styles.dayLabel, textStyle,
             styles.disabledText, disabledDatesTextStyle,
             styles.selectedDisabledText, selectedDisabledDatesTextStyle,
@@ -224,7 +224,7 @@ export default function Day(props) {
             accessible={false}
             disabled={!enableDateChange}
             // Chin - modified
-            style={[custom.style, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }, computedSelectedDayStyle, selectedDayStyle ]}
+            style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
             onPress={() => onPressDay({year, month, day}) }>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
             testID={`${day}`}
@@ -247,15 +247,13 @@ export default function Day(props) {
     }
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
-        <View style={[styles.dayButton, custom.style]}>
-          {/* Chin - modified to highlight today when it is out of range */}
-          <View style={!allowRangeSelection && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }}>
-            <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
-              testID={`${day}`}
-              accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
-              {day}
-            </Text>
-          </View>
+        {/* Chin - modified to highlight today when it is out of range */}
+        <View style={[styles.dayButton, custom.style, !allowRangeSelection && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }]}>
+          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
+            testID={`${day}`}
+            accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+            {day}
+          </Text>
         </View>
       </View>
     );
