@@ -237,6 +237,7 @@ export default function Day(props) {
     }
   }
   else {  // dateOutOfRange = true, and no selected start or end date.
+    let isToday = thisDay.isSame(today, 'day');
     const custom = getCustomDateStyle({customDatesStyles, date: thisDay});
     // Allow customDatesStyles to override disabled dates if allowDisabled set
     if (!custom.allowDisabled) {
