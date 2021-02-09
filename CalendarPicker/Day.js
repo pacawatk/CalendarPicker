@@ -119,7 +119,7 @@ export default function Day(props) {
     if (isToday) {
       computedSelectedDayStyle = styles.selectedToday;
       // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
-      selectedDayTextStyle = [todayTextStyle || styles.selectedDayLabel, propSelectedDayTextStyle];
+      selectedDayTextStyle = [todayTextStyle || styles.selectedDayLabel];
     }
 
     const custom = getCustomDateStyle({customDatesStyles, date: thisDay});
