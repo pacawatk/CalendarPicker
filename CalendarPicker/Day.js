@@ -190,7 +190,7 @@ export default function Day(props) {
             <Text style={[styles.dayLabel, textStyle,
             styles.disabledText, disabledDatesTextStyle,
             styles.selectedDisabledText, selectedDisabledDatesTextStyle,
-              overrideOutOfRangeTextStyle
+              overrideOutOfRangeTextStyle, allowRangeSelection && isToday && { color: '#111111' }
             ]}
               testID={`${day}`}
               accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
