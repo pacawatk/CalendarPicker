@@ -190,7 +190,7 @@ export default function Day(props) {
             <Text style={[styles.dayLabel, textStyle,
             styles.disabledText, disabledDatesTextStyle,
             styles.selectedDisabledText, selectedDisabledDatesTextStyle,
-              overrideOutOfRangeTextStyle, allowRangeSelection && isToday && { color: '#111111' }
+              overrideOutOfRangeTextStyle
             ]}
               testID={`${day}`}
               accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
@@ -226,7 +226,7 @@ export default function Day(props) {
             // Chin - modified
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
             onPress={() => onPressDay({year, month, day}) }>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
+            <Text style={[styles.dayLabel, textStyle, custom.textStyle, !(allowRangeSelection && isToday) && selectedDayTextStyle]}
             testID={`${day}`}
             accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
               { day }
