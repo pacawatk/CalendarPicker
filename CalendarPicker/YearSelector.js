@@ -44,6 +44,7 @@ export default class YearSelector extends Component {
       nextTitleStyle,
       headingLevel,
       onSelectYear,
+      yearFormatter
     } = this.props;
 
     return (
@@ -76,6 +77,7 @@ export default class YearSelector extends Component {
           minDate={minDate}
           maxDate={maxDate}
           textStyle={textStyle}
+          yearFormatter={yearFormatter}
         />
       </View>
     );

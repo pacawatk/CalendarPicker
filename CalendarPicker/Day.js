@@ -136,7 +136,8 @@ export default function Day(props) {
         isThisDaySameAsSelectedStart)
     {
       computedSelectedDayStyle = styles.selectedDay;
-      selectedDayTextStyle = [styles.selectedDayLabel, isToday && todayTextStyle, propSelectedDayTextStyle];
+      // Chin - modified, selectedDay style should override today style...
+      selectedDayTextStyle = [isToday && todayTextStyle, styles.selectedDayLabel, propSelectedDayTextStyle];
       // selectedDayStyle prop overrides selectedDayColor (created via makeStyles)
       selectedDayStyle = propSelectedDayStyle || styles.selectedDayBackground;
     }
@@ -187,17 +188,20 @@ export default function Day(props) {
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}>
             <Text style={[styles.dayLabel, textStyle,
-              styles.disabledText, disabledDatesTextStyle,
-              styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+            styles.disabledText, disabledDatesTextStyle,
+            styles.selectedDisabledText, selectedDisabledDatesTextStyle,
               overrideOutOfRangeTextStyle
-            ]}>
-              { day }
+            ]}
+              testID={`${day}`}
+              accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+              {day}
             </Text>
           </View>
         </View>
       );
     } else {
       return (
+        // Fluke - custom style range selection
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           {isThisDaySameAsSelectedEnd && (selectedStartDate && selectedEndDate) && <View style={
             {
@@ -219,7 +223,8 @@ export default function Day(props) {
             activeOpacity={1}
             accessible={false}
             disabled={!enableDateChange}
-            style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}
+            // Chin - modified
+            style={[custom.style, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }, computedSelectedDayStyle, selectedDayStyle ]}
             onPress={() => onPressDay({year, month, day}) }>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
             testID={`${day}`}
@@ -242,9 +247,14 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
-            { day }
-          </Text>
+          {/* Chin - modified to highlight today when it is out of range */}
+          <View style={!allowRangeSelection && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }}>
+            <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
+              testID={`${day}`}
+              accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+              {day}
+            </Text>
+          </View>
         </View>
       </View>
     );
