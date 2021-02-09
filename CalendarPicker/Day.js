@@ -226,8 +226,7 @@ export default function Day(props) {
             // Chin - modified
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
             onPress={() => onPressDay({year, month, day}) }>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle,
-            !(allowRangeSelection && isToday && !isThisDaySameAsSelectedEnd) && selectedDayTextStyle]}
+            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
               testID={`${day}`}
               accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
               {day}
