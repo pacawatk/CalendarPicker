@@ -184,7 +184,7 @@ export function makeStyles(params) {
 
     selectedDisabledText: {
       fontSize: 14*scaler,
-      color: '#DDDDDD',
+      color: '#BBBBBB',
       alignSelf: 'center',
       justifyContent: 'center'
     },
