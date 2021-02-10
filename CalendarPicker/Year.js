@@ -55,7 +55,7 @@ export default function Year(props) {
     <View style={[styles.yearContainer]}>
       { !yearOutOfRange ?
         <TouchableOpacity
-          onPress={onSelect}
+          onPress={!!onSelectYear ? onSelect: undefined}
           accessible={false}
           activeOpacity={1}>
           <Text style={[styles.yearText, textStyle]}
@@ -76,5 +76,5 @@ export default function Year(props) {
 Year.propTypes = {
   styles: PropTypes.shape({}),
   year: PropTypes.number,
-  onSelectYear: PropTypes.func,
+  onSelectYear?: PropTypes.func,
 };

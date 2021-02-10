@@ -56,7 +56,7 @@ export default function Month(props) {
         <TouchableOpacity
           accessible={false}
           activeOpacity={1}
-          onPress={onSelect}>
+          onPress={!!onSelectMonth ? onSelect : undefined}>
           <Text style={[styles.monthText, textStyle]}
             testID={`calendar-month-${monthName}`} accessibilityLabel={Platform.OS === 'android' ? `calendar-month-${monthName}` : undefined}>
             {monthName}
@@ -75,5 +75,5 @@ Month.propTypes = {
   styles: PropTypes.shape({}),
   currentMonth: PropTypes.number,
   currentYear: PropTypes.number,
-  onSelectMonth: PropTypes.func,
+  onSelectMonth?: PropTypes.func,
 };

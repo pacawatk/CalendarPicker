@@ -54,5 +54,5 @@ MonthsGridView.propTypes = {
   styles: PropTypes.shape(),
   currentYear: PropTypes.number.isRequired,
   months: PropTypes.array,
-  onSelectMonth: PropTypes.func,
+  onSelectMonth?: PropTypes.func,
 };
