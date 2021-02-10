@@ -482,7 +482,8 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
-      yearFormatter
+      yearFormatter,
+      disableMonthYearSelection
     } = this.props;
 
     let content;
@@ -500,6 +501,7 @@ export default class CalendarPicker extends Component {
           onSelectMonth={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
           yearFormatter={yearFormatter}
+          disableMonthYearSelection={disableMonthYearSelection}
         />
       );
       break;
@@ -524,6 +526,7 @@ export default class CalendarPicker extends Component {
           onSelectYear={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
           yearFormatter={yearFormatter}
+          disableMonthYearSelection={disableMonthYearSelection}
         />
       );
       break;
@@ -556,6 +559,7 @@ export default class CalendarPicker extends Component {
             monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
             headerWrapperStyle={headerWrapperStyle}
             yearFormatter={yearFormatter}
+            disableMonthYearSelection={disableMonthYearSelection}
           />
           <Weekdays
             styles={styles}

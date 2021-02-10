@@ -192,8 +192,8 @@ export default function Day(props) {
             styles.selectedDisabledText, selectedDisabledDatesTextStyle,
               overrideOutOfRangeTextStyle
             ]}
-              testID={`${day}`}
-              accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+              testID={`${day}-${month}-${year + 543}`}
+              accessibilityLabel={Platform.OS === 'android' ? `${day}-${month}-${year + 543}` : undefined}>
               {day}
             </Text>
           </View>
@@ -227,8 +227,8 @@ export default function Day(props) {
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
             onPress={() => onPressDay({year, month, day}) }>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
-              testID={`${day}`}
-              accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+              testID={`${day}-${month}-${year + 543}`}
+              accessibilityLabel={Platform.OS === 'android' ? `${day}-${month}-${year + 543}` : undefined}>
               {day}
             </Text>
           </TouchableOpacity>
@@ -250,8 +250,8 @@ export default function Day(props) {
         {/* Chin - modified to highlight today when it is out of range */}
         <View style={[styles.dayButton, custom.style, !allowRangeSelection && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }]}>
           <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
-            testID={`${day}`}
-            accessibilityLabel={Platform.OS === 'android' ? `${day}` : undefined}>
+            testID={`${day}-${month}-${year + 543}`}
+            accessibilityLabel={Platform.OS === 'android' ? `${day}-${month}-${year + 543}` : undefined}>
             {day}
           </Text>
         </View>

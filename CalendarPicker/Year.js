@@ -56,6 +56,7 @@ export default function Year(props) {
       { !yearOutOfRange ?
         <TouchableOpacity
           onPress={onSelect}
+          accessible={false}
           activeOpacity={1}>
           <Text style={[styles.yearText, textStyle]}
             testID={`calander-year-${currentMonth}`} accessibilityLabel={Platform.OS === 'android' ? `calander-year-${currentMonth}` : undefined}>
