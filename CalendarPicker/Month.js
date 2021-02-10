@@ -75,5 +75,5 @@ Month.propTypes = {
   styles: PropTypes.shape({}),
   currentMonth: PropTypes.number,
   currentYear: PropTypes.number,
-  onSelectMonth?: PropTypes.func,
+  onSelectMonth: PropTypes.func,
 };

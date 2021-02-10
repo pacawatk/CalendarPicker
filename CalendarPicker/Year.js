@@ -76,5 +76,5 @@ export default function Year(props) {
 Year.propTypes = {
   styles: PropTypes.shape({}),
   year: PropTypes.number,
-  onSelectYear?: PropTypes.func,
+  onSelectYear: PropTypes.func,
 };

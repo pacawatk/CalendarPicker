@@ -54,5 +54,5 @@ export default function YearsGridView(props) {
 YearsGridView.propTypes = {
   styles: PropTypes.shape(),
   intialYear: PropTypes.number.isRequired,
-  onSelectYear?: PropTypes.func,
+  onSelectYear: PropTypes.func,
 };
