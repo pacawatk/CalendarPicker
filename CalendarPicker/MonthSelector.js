@@ -24,8 +24,7 @@ export default class MonthSelector extends Component {
       minDate,
       maxDate,
       onSelectMonth,
-      yearFormatter,
-      disableMonthYearSelection
+      yearFormatter
     } = this.props;
 
     return (
@@ -43,7 +42,7 @@ export default class MonthSelector extends Component {
           months={months}
           minDate={minDate}
           maxDate={maxDate}
-          onSelectMonth={disableMonthYearSelection ? undefined : onSelectMonth}
+          onSelectMonth={onSelectMonth}
         />
       </View>
     );

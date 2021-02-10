@@ -501,7 +501,6 @@ export default class CalendarPicker extends Component {
           onSelectMonth={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
           yearFormatter={yearFormatter}
-          disableMonthYearSelection={disableMonthYearSelection}
         />
       );
       break;
@@ -540,8 +539,8 @@ export default class CalendarPicker extends Component {
             initialDate={moment(initialDate)}
             onPressPrevious={this.handleOnPressPrevious}
             onPressNext={this.handleOnPressNext}
-            onPressMonth={this.handleOnPressMonth}
-            onPressYear={this.handleOnPressYear}
+            onPressMonth={disableMonthYearSelection ? () => { } : this.handleOnPressMonth}
+            onPressYear={disableMonthYearSelection ? () => { } : this.handleOnPressYear}
             months={months}
             previousComponent={previousComponent}
             nextComponent={nextComponent}

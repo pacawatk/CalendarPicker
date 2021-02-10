@@ -59,14 +59,23 @@ export default function HeaderControls(props) {
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
       <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
-        <TouchableOpacity onPress={onPressMonth}>
-          <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
-            { monthName }
+        <TouchableOpacity onPress={onPressMonth}
+          accessible={false}
+          activeOpacity={1}>
+          <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]}
+            testID={`header-month-${monthName}-${yearFormatter(year)}`}
+            accessibilityLabel={Platform.OS === 'android' ? `header-month-${monthName}-${yearFormatter(year)}` : undefined}
+            {...accessibilityProps}>
+            {monthName}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={onPressYear}>
-          <Text style={[styles.yearHeaderMainText, textStyle, yearTitleStyle]}>
-            { yearFormatter ? yearFormatter(year) : year }
+        <TouchableOpacity onPress={onPressYear}
+          accessible={false}
+          activeOpacity={1}>
+          <Text style={[styles.yearHeaderMainText, textStyle, yearTitleStyle]}
+            testID={`header-year-${monthName}-${yearFormatter(year)}`}
+            accessibilityLabel={Platform.OS === 'android' ? `header-year-${monthName}-${yearFormatter(year)}` : undefined}>
+            {yearFormatter ? yearFormatter(year) : year}
           </Text>
         </TouchableOpacity>
       </View>
