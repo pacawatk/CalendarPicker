@@ -2,7 +2,8 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -54,13 +55,16 @@ export default function Year(props) {
     <View style={[styles.yearContainer]}>
       { !yearOutOfRange ?
         <TouchableOpacity
-          onPress={onSelect}>
-          <Text style={[styles.yearText, textStyle]}>
+          onPress={onSelect}
+          activeOpacity={1}>
+          <Text style={[styles.yearText, textStyle]}
+            testID={`calander-year-${currentMonth}`} accessibilityLabel={Platform.OS === 'android' ? `calander-year-${currentMonth}` : undefined}>
             {yearFormatter ? yearFormatter(year) : year}
           </Text>
         </TouchableOpacity>
         :
-        <Text style={[textStyle, styles.disabledText]}>
+        <Text style={[textStyle, styles.disabledText]}
+          testID={`calander-year-${currentMonth}`} accessibilityLabel={Platform.OS === 'android' ? `calander-year-${currentMonth}` : undefined}>
           {yearFormatter ? yearFormatter(year) : year}
         </Text>
       }

@@ -37,7 +37,8 @@ export default function Weekdays(props) {
         }
         return (
           <View style={customDayOfWeekStyles.style} key={key}>
-            <Text style={dayOfWeekTextStyle}>
+            <Text style={dayOfWeekTextStyle}
+              testID={`day-of-week-${key}`} accessibilityLabel={Platform.OS === 'android' ? `day-of-week-${key}` : undefined}>
               {day}
             </Text>
           </View>
