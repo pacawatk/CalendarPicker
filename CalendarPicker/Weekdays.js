@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
