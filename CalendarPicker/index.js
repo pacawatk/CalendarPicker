@@ -391,7 +391,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStartStyle: this.props.selectedRangeStartStyle,
       selectedRangeStyle: this.props.selectedRangeStyle,
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
-      customDatesStyles: this.props.customDatesStyles,
+      customDatesStyles: this.props.customDatesStyles
     };
   }
 
@@ -483,7 +483,8 @@ export default class CalendarPicker extends Component {
       scrollable,
       horizontal,
       yearFormatter,
-      disableMonthYearSelection
+      disableMonthYearSelection,
+      circleToday
     } = this.props;
 
     let content;
@@ -575,7 +576,7 @@ export default class CalendarPicker extends Component {
               ref={scroller => this.scroller = scroller}
               data={monthsList}
               renderMonth={this.renderMonth}
-              renderMonthParams={renderMonthParams}
+              renderMonthParams={{...renderMonthParams, circleToday}}
               maxSimultaneousMonths={this.numMonthsScroll}
               initialRenderIndex={initialScrollerIndex}
               minDate={minDate}
@@ -586,7 +587,7 @@ export default class CalendarPicker extends Component {
               horizontal={horizontal}
             />
             :
-            this.renderMonth(renderMonthParams)
+            this.renderMonth({...renderMonthParams, circleToday})
           }
         </View>
       );

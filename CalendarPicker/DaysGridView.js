@@ -159,6 +159,7 @@ export default class DaysGridView extends Component {
           disabledDates={() => true}
           disabledDatesTextStyle={this.props.disabledDatesTextStyle}
           textStyle={this.props.textStyle}
+          circleToday={this.props.circleToday}
         />
       )
     });
@@ -268,4 +269,5 @@ DaysGridView.propTypes = {
   disabledDatesTextStyle: stylePropType,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
+  circleToday: PropTypes.bool
 };

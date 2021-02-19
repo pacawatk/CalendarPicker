@@ -36,7 +36,8 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    circleToday
   } = props;
 
   const thisDay = moment({year, month, day, hour: 12 });
@@ -186,7 +187,7 @@ export default function Day(props) {
     if (dateOutOfRange) { // start or end date selected, and this date outside of range.
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}>
+          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle, circleToday && isToday && { borderColor: '#dadada', borderWidth: 1 }]}>
             <Text style={[styles.dayLabel, textStyle,
             styles.disabledText, disabledDatesTextStyle,
             styles.selectedDisabledText, selectedDisabledDatesTextStyle,
@@ -224,7 +225,7 @@ export default function Day(props) {
             accessible={false}
             disabled={!enableDateChange}
             // Chin - modified
-            style={[custom.style, computedSelectedDayStyle, selectedDayStyle, !allowRangeSelection && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
+            style={[custom.style, computedSelectedDayStyle, selectedDayStyle, circleToday && isToday && { borderColor: '#dadada', borderWidth: 1 }]}
             onPress={() => onPressDay({year, month, day}) }>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
               testID={`${day}-${month + 1}-${year + 543}`}
@@ -248,7 +249,7 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         {/* Chin - modified to highlight today when it is out of range */}
-        <View style={[styles.dayButton, custom.style, !allowRangeSelection && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }]}>
+        <View style={[styles.dayButton, custom.style, circleToday && isToday && { ...styles.selectedToday, backgroundColor: 'transparent', borderColor: '#dadada', borderWidth: 1 }]}>
           <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
             testID={`${day}-${month + 1}-${year + 543}`}
             accessibilityLabel={Platform.OS === 'android' ? `${day}-${month}-${year + 543}` : undefined}>
